@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <ul>
+    Lista jachtów :
+        {% for object in yacht %}
+
+            <li><a href="{{ object.get_absolute_url}}">{{ object }}</a></li>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

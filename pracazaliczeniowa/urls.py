@@ -23,10 +23,12 @@ urlpatterns = [
     path('signup/', views.SignUpView.as_view(), name='signup'),
     path('', include('django.contrib.auth.urls')),
     path("", views.IndexView.as_view(), name='index'),
-    path("view_yacht/", views.YachtPersonView.as_view(), name='view_yacht'),
+    path("view_yacht/", views.YachtView.as_view(), name='view_yacht'),
     path("add_yacht/", views.AddYacht.as_view(), name='add_yacht'),
     path("yacht_detail/<int:id>/", views.YachtViewDetail.as_view(), name="yacht_details"),
     path("update_yacht/<int:pk>/", views.UpdateYacht.as_view(), name="yacht_update"),
     path('view_yacht/delete/<int:id>/', views.DeleteYacht.as_view(), name="delete-yacht"),
     path("delete/<int:id>/", views.DeleteYacht.as_view(), name='delete_yacht'),
+    path("view_marina/", views.MarinaView.as_view(), name='view_marina'),
+    path("marina_detail/<int:id>/", views.MarinaViewDetail.as_view(), name="marina_details"),
 ]

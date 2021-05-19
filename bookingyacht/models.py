@@ -24,7 +24,10 @@ class Marina(models.Model):
     country = models.CharField(max_length=64)
 
     def __str__(self):
-        return f"{self.city} {self.country}"
+        return f"{self.name}"
+
+    def get_absolute_url(self):
+        return f"/marina_detail/{self.pk}/"
 
 
 class CharterCompany(models.Model):

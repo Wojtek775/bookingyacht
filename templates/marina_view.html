@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <ul>
+        Lista marin :
+        {% for object in marina %}
+
+            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+
+
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import CreateView, UpdateView
 
 from bookingyacht.forms import YachtModelForm
-from bookingyacht.models import Yacht
+from bookingyacht.models import Yacht, Marina
 
 
 class IndexView(View):
@@ -22,7 +22,7 @@ class SignUpView(CreateView):
     template_name = 'registration/login.html'
 
 
-class YachtPersonView(View):
+class YachtView(View):
 
     def get(self, request):
         return render(request, 'yacht_view.html', {"yacht": Yacht.objects.all()})
@@ -60,3 +60,13 @@ class AddYacht(CreateView):
         return data
 
 
+class MarinaView(View):
+
+    def get(self, request):
+        return render(request, 'marina_view.html', {"marina": Marina.objects.all()})
+
+
+class MarinaViewDetail(View):
+    def get(self, request, id):
+        marina = Marina.objects.get(pk=id)
+        return render(request, 'MarinaDetails.html', {'marina': marina})

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 
 from bookingyacht.forms import YachtModelForm
 from bookingyacht.models import Yacht
@@ -34,18 +34,10 @@ class YachtViewDetail(View):
         return render(request, 'YachtDetails.html', {'yacht': yacht})
 
 
-class UpdateYacht(View):
-    def get(self, request, id):
-        yacht = Yacht.objects.get(pk=id)
-        form = YachtModelForm(instance=yacht)
-        return render(request, 'forms.html', {"form": form})
-
-    def post(self, request, id):
-        yacht = Yacht.objects.get(pk=id)
-        form = YachtModelForm(request.POST, instance=yacht)
-        if form.is_valid():
-            yacht = form.save()
-        return redirect("view_yacht")
+class UpdateYacht(UpdateView):
+    model = Yacht
+    template_name = 'forms.html'
+    fields = "__all__"
 
 
 class DeleteYacht(View):
@@ -56,23 +48,15 @@ class DeleteYacht(View):
         return redirect("view_yacht")
 
 
-class AddYacht(View):
+class AddYacht(CreateView):
+    model = Yacht
+    template_name = 'forms.html'
+    success_url = reverse_lazy('view_yacht')
+    fields = "__all__"
 
-    def get(self, request):
-        form = YachtModelForm()
-        return render(request, 'forms.html', {'form': form})
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['yacht'] = Yacht.objects.all()
+        return data
 
-    def post(self, request):
-        form = YachtModelForm(request.POST)
-        if form.is_valid():
-            yacht = Yacht()
-            yacht.name = form.cleaned_data.get('name')
-            yacht.year = form.cleaned_data.get('year')
-            yacht.length = form.cleaned_data.get('length')
-            yacht.max_person = form.cleaned_data.get('max_person')
-            yacht.price = form.cleaned_data.get('price')
-            yacht.yacht_category = form.cleaned_data.get('yacht_category')
-            yacht.charter_company = form.cleaned_data.get('charter_company')
-            yacht.save()
-            return redirect('view_yacht')
-        return render(request, 'forms.html', {'form': form})
+

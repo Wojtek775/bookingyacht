@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import CreateView, UpdateView
 
 from bookingyacht.forms import YachtModelForm
-from bookingyacht.models import Yacht, Marina
+from bookingyacht.models import Yacht, Marina, CharterCompany
 
 
 class IndexView(View):
@@ -70,3 +70,15 @@ class MarinaViewDetail(View):
     def get(self, request, id):
         marina = Marina.objects.get(pk=id)
         return render(request, 'MarinaDetails.html', {'marina': marina})
+
+
+class CharterCompanyView(View):
+
+    def get(self, request):
+        return render(request, 'CharterCompany_view.html', {"charter": CharterCompany.objects.all()})
+
+
+class CharterCompanyViewDetail(View):
+    def get(self, request, id):
+        charter = CharterCompany.objects.get(pk=id)
+        return render(request, 'CharterCompanyDetails.html', {'charter': charter})

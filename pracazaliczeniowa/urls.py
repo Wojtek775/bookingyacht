@@ -31,4 +31,6 @@ urlpatterns = [
     path("delete/<int:id>/", views.DeleteYacht.as_view(), name='delete_yacht'),
     path("view_marina/", views.MarinaView.as_view(), name='view_marina'),
     path("marina_detail/<int:id>/", views.MarinaViewDetail.as_view(), name="marina_details"),
+    path("view_chartercompany/", views.CharterCompanyView.as_view(), name='view_charter'),
+    path("chartercompany_detail/<int:id>/", views.CharterCompanyViewDetail.as_view(), name="charter_details"),
 ]

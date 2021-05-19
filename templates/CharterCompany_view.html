@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <ul>
+        Lista firm czarterujących :
+        {% for object in charter %}
+
+            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+
+
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

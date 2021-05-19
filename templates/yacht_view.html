@@ -3,11 +3,14 @@
 {% block content %}
 
     <ul>
-    Lista jachtów :
+        Lista jachtów :
         {% for object in yacht %}
 
-            <li><a href="{{ object.get_absolute_url}}">{{ object }}</a></li>
+            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a><a href="http://127.0.0.1:8000/update_yacht/{{ object.id }}/"> edytuj</a> <a href="/delete/{{ object.id }}/">usuń</a> </li>
+
 
         {% endfor %}
     </ul>
+<a href="{% url 'add_yacht' %}">dodaj jacht</a>
+
 {% endblock %}

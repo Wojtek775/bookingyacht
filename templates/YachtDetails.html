@@ -1,14 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-    <ul>
-        <li>{{ yacht.name }}</li>
-        <li>{{ yacht.year }}</li>
-        <li>{{ yacht.length }}</li>
-        <li>{{ yacht.max_person }}</li>
-        <li>{{ yacht.price }}</li>
-        <li>{{ yacht.yacht_category }}</li>
-        <li>{{ yacht.charter_company }}</li>
-    </ul>
+    <tr>
+        <td><h5>Nazwa : </h5></td>
+        <td>{{ yacht.name }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>Rok produkcji : </h5></td>
+        <td>{{ yacht.year }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>Długość : </h5></td>
+        <td>{{ yacht.length }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>max ilość osób : </h5></td>
+        <td>{{ yacht.max_person }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>Cena w Euro: </h5></td>
+        <td>{{ yacht.price }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>Typ jachtu : </h5></td>
+        <td>{{ yacht.get_category_display }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>firma czarterująca : </h5></td>
+        <td>{{ yacht.charter_company }}</td>
+    </tr>
+    <ul></ul>
+
+
+    <button onclick="location.href=
+            '{% url 'reserve-yacht' yacht.id %}';">Zarezerwuj
 
 
     <button onclick="location.href=

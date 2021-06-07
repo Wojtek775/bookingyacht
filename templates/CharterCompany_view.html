@@ -3,10 +3,10 @@
 {% block content %}
 
     <ul>
-        Lista firm czarterujących :
+        <h3>Lista firm czarterujących :</h3>
         {% for object in charter %}
 
-            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a></li>
+            <li><h4><a href="{{ object.get_absolute_url }}">{{ object }}</a></h4></li>
 
 
         {% endfor %}

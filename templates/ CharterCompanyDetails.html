@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <tr>
+        <td><h5>Nazwa charteru : </h5></td>
+        <td>{{ charter.name }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+
+        <td><h5>Nazwa Mariny: </h5></td>
+        {% for marina in charter.marina.all %}
+            <td>{{ marina }}</td>
+        {% endfor %}
+        <ul></ul>
+
+
+    </tr>
+
+
+{% endblock %}

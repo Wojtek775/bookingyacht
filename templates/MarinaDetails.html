@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-    <ul>
-        <li>{{ marina.name }}</li>
-        <li>{{ marina.city }}</li>
-        <li>{{ marina.country }}</li>
 
-    </ul>
-
+    <tr>
+        <td><h5>Nazwa : </h5></td>
+        <td>{{ marina.name }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>Miasto : </h5></td>
+        <td>{{ marina.city }}</td>
+    </tr>
+    <ul></ul>
+    <tr>
+        <td><h5>Państwo : </h5></td>
+        <td>{{ marina.country }}</td>
+    </tr>
+    <ul></ul>
 
     <!--<button onclick="location.href=
             '{#% url 'yacht_update' yacht.id %#}';">edycja

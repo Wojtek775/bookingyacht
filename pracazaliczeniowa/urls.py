@@ -21,6 +21,7 @@ from bookingyacht import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('kontakt/', views.Contact.as_view(), name='contact'),
     path('', include('django.contrib.auth.urls')),
     path("", views.IndexView.as_view(), name='index'),
     path("view_yacht/", views.YachtView.as_view(), name='view_yacht'),
@@ -33,4 +34,5 @@ urlpatterns = [
     path("marina_detail/<int:id>/", views.MarinaViewDetail.as_view(), name="marina_details"),
     path("view_chartercompany/", views.CharterCompanyView.as_view(), name='view_charter'),
     path("chartercompany_detail/<int:id>/", views.CharterCompanyViewDetail.as_view(), name="charter_details"),
+    path('yacht/reserve/<int:id>/', views.ReservationView.as_view(), name="reserve-yacht"),
 ]

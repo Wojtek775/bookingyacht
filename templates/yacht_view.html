@@ -2,15 +2,40 @@
 
 {% block content %}
 
-    <ul>
-        Lista jachtów :
+
+
+    <table style="border: solid black">
+        <colgroup>
+            <col style="width: 65px">
+            <col style="width: 73px">
+            <col style="width: 88px">
+        </colgroup>
+        <thead>
+        <tr>
+            <th colspan="2">Lista Jachtów<br><br></th>
+        </tr>
+        </thead>
+        <tbody style="border:1px solid black">
         {% for object in yacht %}
 
-            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a><a href="http://127.0.0.1:8000/update_yacht/{{ object.id }}/"> edytuj</a> <a href="/delete/{{ object.id }}/">usuń</a> </li>
+            <tr>
 
+                <td style="border:1px solid black"><a href="{{ object.get_absolute_url }}">{{ object }}</a></td>
+                <td style="border:1px solid black"><a href="http://127.0.0.1:8000/update_yacht/{{ object.id }}/"> edytuj</a></td>
+                <td style="border:1px solid black"><a href="/delete/{{ object.id }}/">usuń</a></td>
 
+            </tr>
         {% endfor %}
-    </ul>
-<a href="{% url 'add_yacht' %}">dodaj jacht</a>
+        <p>
+        <tr>
+            <button onclick="location.href=
+                    '{% url 'add_yacht' %}';">dodaj jacht
+            </button>
+        </tr>
+        </p>
+        </tbody>
+    </table>
+
 
 {% endblock %}
+

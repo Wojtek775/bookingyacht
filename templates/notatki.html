@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+  <ul>
+          <tr>
+    <th colspan="3">lista jachtów<br></th>
+  </tr>
+        {% for object in yacht %}
+
+            <li><a href="{{ object.get_absolute_url }}">{{ object }}</a><a href="http://127.0.0.1:8000/update_yacht/{{ object.id }}/"> edytuj</a> <a href="/delete/{{ object.id }}/">usuń</a> </li>
+
+
+        {% endfor %}
+    </ul>
+<a href="{% url 'add_yacht' %}">dodaj jacht</a>

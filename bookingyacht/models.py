@@ -6,16 +6,16 @@ YACHT_CATEGORY = (
     (1, "monohulls"),
     (2, "catamarans"),
     (3, "Motor Boat"),
-    (4, "Trimaran"),
+    (4, "Trimaran")
 
 )
 
 
-class YachtCategory(models.Model):
-    category = models.IntegerField(choices=YACHT_CATEGORY)
-
-    def __str__(self):
-        return f"{self.category}"
+#class YachtCategory(models.Model):
+#    category = models.IntegerField(choices=YACHT_CATEGORY)
+#
+ #   def __str__(self):
+ #       return f"{self.category}"
 
 
 class Marina(models.Model):
@@ -32,7 +32,7 @@ class Marina(models.Model):
 
 class CharterCompany(models.Model):
     name = models.CharField(max_length=64)
-    marina = models.ManyToManyField(Marina)
+    marina = models.ManyToManyField('Marina')
 
     def __str__(self):
         return f"{self.name}"
@@ -47,7 +47,7 @@ class Yacht(models.Model):
     length = models.IntegerField()
     max_person = models.IntegerField()
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    yacht_category = models.ForeignKey(YachtCategory, on_delete=models.CASCADE)
+    category = models.IntegerField(choices=YACHT_CATEGORY, null=False, blank=False)
     charter_company = models.ForeignKey(CharterCompany, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -60,4 +60,5 @@ class Yacht(models.Model):
 class YachtReservation(models.Model):
     date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    yacht = models.OneToOneField(Yacht, on_delete=models.CASCADE)
+    yacht = models.ForeignKey(Yacht, on_delete=models.CASCADE)
+

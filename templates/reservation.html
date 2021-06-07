@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div>
+
+        <h2>Nazwa yachtu: {{ yacht.name }}</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <label for="reservation-date">Data rezerwacji</label>
+            <input type="date" id="reservation-date" name="reservation-date" max="3000-12-31"
+                   min="2021-01-01" class="form-control">
+
+
+            <button type="submit">Zarezerwuj</button>
+        </form>
+
+    </div>
+
+
+    {% if error %}
+
+        <div>
+            <h2>{{ error }}</h2>
+
+        </div>
+
+    {% endif %}
+
+    <h3>Rezerwacje</h3>
+
+    <ul class="list-group">
+
+        {% for reservation in reservations %}
+
+            <li class="list-group-item">
+
+                <h4>{{ reservation.date }}</h4>
+                <h4>przez użytkownika :{{ reservation.user }}</h4>
+
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock %}

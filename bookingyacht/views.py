@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView
 
-from bookingyacht.forms import YachtModelForm
+from bookingyacht.forms import YachtModelForm, MarinaModelForm
 from bookingyacht.models import Yacht, Marina, CharterCompany, YachtReservation
 
 
@@ -124,3 +124,9 @@ class ReservationView(LoginRequiredMixin, View):
 class Contact(View):
     def get(self, request):
         return render(request, 'contact.html')
+
+
+class AddMarina(LoginRequiredMixin, CreateView):
+    form_class = MarinaModelForm
+    template_name = 'forms.html'
+    success_url = reverse_lazy('view_marina')

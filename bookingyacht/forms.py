@@ -1,6 +1,6 @@
 from django import forms
 
-from bookingyacht.models import Yacht, Marina
+from bookingyacht.models import Yacht, Marina, CharterCompany
 
 
 class YachtModelForm(forms.ModelForm):
@@ -12,4 +12,10 @@ class YachtModelForm(forms.ModelForm):
 class MarinaModelForm(forms.ModelForm):
     class Meta:
         model = Marina
+        fields = '__all__'
+
+
+class CharterCompanyModelForm(forms.ModelForm):
+    class Meta:
+        model = CharterCompany
         fields = '__all__'

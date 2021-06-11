@@ -136,3 +136,17 @@ class AddCharterCompany(LoginRequiredMixin, CreateView):
     form_class = CharterCompanyModelForm
     template_name = 'forms.html'
     success_url = reverse_lazy('add_charter_company')
+
+
+class UpdateMarina(LoginRequiredMixin, UpdateView):
+    model = Marina
+    template_name = 'forms.html'
+    fields = "__all__"
+
+
+class DeleteMarina(LoginRequiredMixin, View):
+
+    def get(self, request, pk):
+        marina = Marina.objects.get(id=pk)
+        marina.delete()
+        return redirect("view_marina")

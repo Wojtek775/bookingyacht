@@ -37,4 +37,6 @@ urlpatterns = [
     path('yacht/reserve/<int:id>/', views.ReservationView.as_view(), name="reserve-yacht"),
     path("add_marina/", views.AddMarina.as_view(), name='add_marina'),
     path("add_charter_company/", views.AddCharterCompany.as_view(), name='add_charter_company'),
+    path("update_marina/<int:pk>/", views.UpdateMarina.as_view(), name="marina_update"),
+    path("delete_marina/<int:pk>/", views.DeleteMarina.as_view(), name='delete_marina'),
 ]

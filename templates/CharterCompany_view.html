@@ -2,20 +2,34 @@
 
 {% block content %}
 
-    <ul>
-        <h3>Lista firm czarterujących :</h3>
+
+    <table style="border: solid black">
+        <colgroup>
+            <col style="width: 65px">
+            <col style="width: 73px">
+            <col style="width: 88px">
+        </colgroup>
+        <thead>
+        <tr>
+            <th colspan="2">Lista firm czarterujących :<br><br></th>
+        </tr>
+        </thead>
+        <tbody style="border:1px solid black">
         {% for object in charter %}
-
-            <li><h4><a href="{{ object.get_absolute_url }}">{{ object }}</a></h4></li>
-
-
+            <tr>
+                <td style="border:1px solid black"><a href="{{ object.get_absolute_url }}">{{ object }}</a></td>
+                <td style="border:1px solid black"><a
+                        href="http://127.0.0.1:8000/update_charter_company/{{ object.id }}/">
+                    edytuj</a></td>
+                <td style="border:1px solid black"><a href="/delete_charter_company/{{ object.id }}/">usuń</a></td>
+            </tr>
         {% endfor %}
-    </ul>
 
-    <tr>
-        <button onclick="location.href=
-                '{% url 'add_charter_company' %}';">dodaj frime czarterową
-        </button>
-    </tr>
-
+        <p>
+            <tr>
+                <button onclick="location.href=
+                        '{% url 'add_charter_company' %}';">dodaj frime czarterową
+                </button>
+            </tr>
+        </p>
 {% endblock %}

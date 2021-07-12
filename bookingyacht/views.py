@@ -150,3 +150,17 @@ class DeleteMarina(LoginRequiredMixin, View):
         marina = Marina.objects.get(id=pk)
         marina.delete()
         return redirect("view_marina")
+
+
+class UpdateCharterCompany(LoginRequiredMixin, UpdateView):
+    model = CharterCompany
+    template_name = 'forms.html'
+    fields = "__all__"
+
+
+class DeleteCharterCompany(LoginRequiredMixin, View):
+
+    def get(self, request, pk):
+        charter = CharterCompany.objects.get(id=pk)
+        charter.delete()
+        return redirect("view_charter")
